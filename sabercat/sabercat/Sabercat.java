@@ -3,15 +3,13 @@
  *
  * Created on October 7, 2004, 5:44 PM
  */
+package sabercat;
 import java.io.*;
 /**
  *
  * @author  sorenm
  */
 public class Sabercat {
-    public static void main(String argv[]) {
-        Sabercat sc = new Sabercat();
-    }
     
     String tag="";
     String title="";
@@ -21,9 +19,9 @@ public class Sabercat {
     String comment="";
     int genre=-1;
     /** Creates a new instance of Sabercat */
-    public Sabercat() {
+    public Sabercat(String filename) {
         try {
-            File file = new File("/home/sorenm/mp3/Mandy Moore - Candy.mp3");
+            File file = new File(filename);
        
         RandomAccessFile raf = new RandomAccessFile(file, "r");
     
@@ -84,7 +82,26 @@ public class Sabercat {
         }
         System.exit(0);
     }
+    public String getTitle() {
+        return title;
+    }
     
+    public String getArtist() {
+        return artist;
+    }
+    public String getGenre() {
+        return genres[genre];
+    }
+    public String getAlbum() {
+        return album;
+    }
+    public String getYear() {
+        return year;
+    }
+    public String getComment() {
+        return comment;
+    }
+    /* Array of the genres !!! */
     public static final String [] genres = {
 	"Blues","Classic Rock","Country","Dance","Disco","Funk","Grunge",
 	"Hip-Hop","Jazz","Metal","New Age","Oldies","Other","Pop","R&B",
