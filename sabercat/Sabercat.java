@@ -21,10 +21,9 @@ public class Sabercat {
     String comment="";
     int genre=-1;
     /** Creates a new instance of Sabercat */
-    public Sabercat() {
+    public Sabercat(File file) {
         try {
-            File file = new File("/home/sorenm/mp3/Mandy Moore - Candy.mp3");
-       
+      
         RandomAccessFile raf = new RandomAccessFile(file, "r");
     
         // Read a character
@@ -33,7 +32,6 @@ public class Sabercat {
         for(int i=0; i < 3; i++) {
             System.out.println(raf.readByte());
         }
-        System.out.println("ID Tag:"+idtag);
         // Seek to end of file
         raf.seek(file.length()-128);
         String comments="";
@@ -56,33 +54,11 @@ public class Sabercat {
         genre = raf.readByte();
         
 
-        System.out.println("TAG: "+tag);
-        System.out.println("Title: "+title);
-        System.out.println("Artist: "+artist);
-        System.out.println("Album: "+album);
-        System.out.println("Year: "+year);
-        System.out.println("Comment: "+comment);
-          System.out.println("Genre: "+genres[genre]);
-        /*String title="";
-        for(int i=3; i < 33; i++) {
-            title += raf.readChar();
-        }
-        System.out.println(title);
-            
-        
-        String comments="";
-        for(int i=97; i < 126; i++) {
-            comments += raf.readChar();
-        }
-        System.out.println(comments);
-        */
-        
         }
         catch(Exception e) {
             e.printStackTrace();
             System.out.println( e);
         }
-        System.exit(0);
     }
     
     public static final String [] genres = {
